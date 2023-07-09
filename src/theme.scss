@@ -1,0 +1,108 @@
+@import "../node_modules/@angular/material/theming";
+@include mat-core();
+
+$spotify-green-palette: (
+  50: #f2fcf7,
+  100: #d8f9ea,
+  200: #bdf6dd,
+  300: #a2f4d1,
+  400: #87f1c4,
+  500: #1ed760,
+  600: #69e9a6,
+  700: #50d787,
+  800: #38c568,
+  900: #1eae4a,
+  A100: #1ed760,
+  A200: #1ed760,
+  A400: #1ed760,
+  A700: #1ed760,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  ),
+);
+
+$spotify-black-palette: (
+  50: #191414,
+  100: #191414,
+  200: #191414,
+  300: #191414,
+  400: #191414,
+  500: #191414,
+  600: #191414,
+  700: #191414,
+  800: #191414,
+  900: #191414,
+  A100: #191414,
+  A200: #191414,
+  A400: #191414,
+  A700: #191414,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  ),
+);
+
+$spotify-warning-palette: (
+   50: #fffbf2,
+   100: #fff4d6,
+   200: #ffe8ad,
+   300: #ffdc84,
+   400: #ffd15b,
+   500: #ffc532, // Spotify warning
+   600: #e6a62d,
+   700: #bf8828,
+   800: #996b23,
+   900: #734f1e,
+   A100: #fffbf2,
+   A200: #fff4d6,
+   A400: #ffd15b,
+   A700: #bf8828,
+   contrast: (
+      50: $dark-primary-text,
+      100: $dark-primary-text,
+      200: $dark-primary-text,
+      300: $dark-primary-text,
+      400: $dark-primary-text,
+      500: $light-primary-text,
+      600: $light-primary-text,
+      700: $light-primary-text,
+      800: $light-primary-text,
+      900: $light-primary-text,
+      A100: $dark-primary-text,
+      A200: $dark-primary-text,
+      A400: $dark-primary-text,
+      A700: $light-primary-text,
+   ),
+);
+
+
+$my-primary: mat-palette($spotify-green-palette, 500);
+$my-accent: mat-palette($spotify-black-palette, 500, 900, A100);
+$my-warn: mat-palette($spotify-warning-palette);
+$my-theme: mat-light-theme($my-primary, $my-accent, $my-warn);
+@include angular-material-theme($my-theme);

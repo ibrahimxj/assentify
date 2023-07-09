@@ -1,0 +1,52 @@
+<div
+  class="bg-[#191414] h-[100vh] w-[100%] flex flex-col items-center justify-center leading-8 overflow-hidden"
+>
+  <button
+    class="mt-[10px] bg-[#1ED760] hover:bg-[#14b54c]e py-2 px-4 rounded-full w-12 h-12 flex items-center justify-center absolute top-[1.5%] left-[4%] shadow-lg"
+    (click)="goBack()"
+  >
+    <img
+      class="w-8 h-8 object-contain -ml-2"
+      src="../../../../assets/svg/backArrow.svg"
+      alt="back"
+    />
+  </button>
+
+  <div class="absolute z-[0] w-[40%] h-[35%] top-0 green__gradient"></div>
+  <div class="text-[#eee]" *ngIf="userProfile">
+    <h2
+      class="text-2xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-3xl leading-[5rem]"
+    >
+      User Profile
+    </h2>
+    <p
+      class="text-2xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-3xl leading-[3rem]"
+    >
+      <strong>Name:</strong> {{ userProfile.display_name }}
+    </p>
+    <p
+      class="flex gap-[10px] text-[18px] sm:text-2xl md:text-2xl lg:text-3xl xl:text-3xl leading-[3rem]"
+    >
+      <strong>Email:</strong> {{ userProfile.email }}
+    </p>
+    <p
+      class="text-2xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-3xl leading-[3rem]"
+    >
+      <strong>Country:</strong> {{ userProfile.country }}
+    </p>
+    <a
+      class="mt-4 bg-[#1ed7c4] hover:bg-[#19b1a2] text-black font-bold py-2 px-4 rounded-full"
+      (click)="checkArtists()"
+      >check Newest Added Artists</a
+    >
+    <button
+      class="mt-[80px] flex mx-auto px-10 py-4 rounded-full text-3xl text-[#191414] animate-hover-up-down font-semibold shadow-lg hover:cursor-pointer bg-spotify-green-800 hover:bg-spotify-green-500 transition-all duration-200"
+      (click)="logout()"
+    >
+      Logout
+    </button>
+  </div>
+  <div *ngIf="!userProfile">
+    <p>Loading user profile...</p>
+  </div>
+</div>

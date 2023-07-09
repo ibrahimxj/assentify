@@ -1,0 +1,13 @@
+<div class="flex flex-col h-24 justify-center items-end">
+  <a
+    [routerLink]="['/profile']"
+    class="flex flex-col justify-center items-center mr-[30px] cursor-pointer"
+  >
+    <img
+      class="w-[55px] rounded-full"
+      [src]="userProfile?.images?.[1]?.url ? userProfile?.images?.[0]?.url : noImage"
+      alt="pfp"
+    />
+    <p>{{ userProfile?.display_name }}</p>
+  </a>
+</div>

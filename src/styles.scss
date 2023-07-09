@@ -1,0 +1,13 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import "tailwindcss/variants";
+
+.green__gradient {
+  background: linear-gradient(90deg, #a2f4d1 0%, #1ed760 100%);
+  filter: blur(900px);
+}
+
+mat-step-header{
+  pointer-events: none !important;
+}

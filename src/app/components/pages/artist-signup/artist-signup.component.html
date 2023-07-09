@@ -1,0 +1,428 @@
+<div class="flex justify-between items-center p-[30px] pb-[10px]">
+  <button
+    class="bg-[#1ED760] hover:bg-[#14b54c] text-white py-2 px-4 rounded-md"
+    (click)="goBack()"
+  >
+    Go Back
+  </button>
+  <button
+    [disabled]="artist.invalid"
+    mat-button
+    (click)="onSubmit()"
+    color="primary"
+    class="bg-[#1ED760] cursor-pointer hover:bg-[#14b54c] text-white py-2 px-4 rounded-md disabled:opacity-25 disabled:cursor-not-allowed pointer-events-auto"
+  >
+    Submit
+  </button>
+</div>
+<div class="h-[400px]">
+  <mat-stepper
+    labelPosition="bottom"
+    #stepper
+    [formGroup]="artistForm"
+    fxFlexFill
+  >
+    <mat-step
+      [stepControl]="basicInfoForm"
+      formGroupName="basicInfo"
+      errorMessage="Fill out your Basic Information"
+    >
+      <h1 class="text-3xl font-bold mb-8">Basic Information</h1>
+      <div class="flex items-start">
+        <div class="w-full sm:w-2/3 md:w-1/2 lg:w-1/3">
+          <div class="mb-8">
+            <label class="block mb-2 text-lg font-medium"
+              >First Name<span class="text-lg text-gray-500">*</span></label
+            >
+            <input
+              class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#1ED760]"
+              type="text"
+              formControlName="firstName"
+            />
+            <mat-error
+              *ngIf="
+                firstName.invalid && (firstName.dirty || firstName.touched)
+              "
+            >
+              <ng-container *ngIf="firstName.errors?.['required']">
+                First Name is required.
+              </ng-container>
+              <ng-container *ngIf="firstName.errors?.['minlength']">
+                First Name must be at least 3 characters long.
+              </ng-container>
+            </mat-error>
+          </div>
+          <div class="mb-8">
+            <label class="block mb-2 text-lg font-medium"
+              >Last Name<span class="text-lg text-gray-500">*</span></label
+            >
+            <input
+              class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#1ED760]"
+              type="text"
+              formControlName="lastName"
+            />
+            <mat-error
+              *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
+            >
+              <ng-container *ngIf="lastName.errors?.['required']">
+                Last Name is required.
+              </ng-container>
+              <ng-container *ngIf="lastName.errors?.['minlength']">
+                Last Name must be at least 3 characters long.
+              </ng-container>
+            </mat-error>
+          </div>
+          <button
+            mat-button
+            color="primary"
+            (click)="stepper.next(); this.basicInfoForm.markAllAsTouched()"
+            class="bg-[#1ED760] hover:bg-[#14b54c] text-white py-2 px-4 rounded-md"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+    </mat-step>
+    <mat-step
+      formGroupName="personalInfo"
+      [stepControl]="personalInfoForm"
+      errorMessage="Please provide your Personal Information"
+    >
+      <h1 class="text-3xl font-bold mb-8">Personal Information</h1>
+      <div class="flex items-start">
+        <div class="w-full sm:w-2/3 md:w-1/2 lg:w-1/3">
+          <div class="mb-8">
+            <label class="block mb-2 text-lg font-medium"
+              >Email<span class="text-lg text-gray-500">*</span></label
+            >
+
+            <input
+              class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#1ED760]"
+              type="email"
+              formControlName="email"
+            />
+            <mat-error *ngIf="email.invalid && (email.dirty || email.touched)">
+              <ng-container *ngIf="email.errors?.['required']">
+                Email is required.
+              </ng-container>
+              <ng-container *ngIf="email.errors?.['email']">
+                Valid email is required.
+              </ng-container>
+            </mat-error>
+          </div>
+          <div class="mb-8">
+            <label class="block mb-2 text-lg font-medium"
+              >Phone Number <span class="text-lg text-gray-500">*</span></label
+            >
+            <div class="flex justify-center items-center">
+              <div
+                class="rounded-l-lg p-2 border border-gray-300 bg-black bg-opacity-5"
+              >
+                +961
+              </div>
+              <input
+                class="w-full p-2 border border-gray-300 rounded-r-lg focus:outline-none focus:ring-2 focus:ring-[#1ED760]"
+                type="tel"
+                formControlName="phoneNumber"
+                inputmode="numeric"
+              />
+            </div>
+
+            <mat-error
+              *ngIf="
+                phoneNumber.invalid &&
+                (phoneNumber.dirty || phoneNumber.touched)
+              "
+            >
+              <ng-container *ngIf="phoneNumber.errors?.['required']">
+                Phone Number is required.
+              </ng-container>
+              <ng-container *ngIf="phoneNumber.errors?.['pattern']">
+                Phone Number should start with 03, 71, or 76 followed by 6
+                digits.
+              </ng-container>
+            </mat-error>
+          </div>
+          <div class="mb-8">
+            <label class="block mb-2 text-lg font-medium"
+              >Date of Birth<span class="text-lg text-gray-500">*</span></label
+            >
+            <input
+              class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#1ED760]"
+              type="date"
+              formControlName="dateOfBirth"
+            />
+            <mat-error
+              *ngIf="
+                dateOfBirth.invalid &&
+                (dateOfBirth.dirty || dateOfBirth.touched)
+              "
+            >
+              <ng-container *ngIf="dateOfBirth.errors?.['required']">
+                Date of Birth is required.
+              </ng-container>
+              <ng-container *ngIf="dateOfBirth.errors?.['minAge']">
+                Minimum age required is
+                {{ dateOfBirth.errors?.["minAge"].requiredAge }}.
+              </ng-container>
+            </mat-error>
+          </div>
+          <div class="flex justify-between">
+            <button
+              mat-button
+              color="primary"
+              (click)="stepper.previous()"
+              class="bg-[#1ED760] hover:bg-[#14b54c] text-white py-2 px-4 rounded-md"
+            >
+              Previous
+            </button>
+            <button
+              mat-button
+              color="primary"
+              (click)="stepper.next(); this.personalInfoForm.markAllAsTouched()"
+              class="bg-[#1ED760] hover:bg-[#14b54c] text-white py-2 px-4 rounded-md"
+            >
+              Next
+            </button>
+          </div>
+        </div>
+      </div>
+    </mat-step>
+    <mat-step
+      formGroupName="artistProfile"
+      [stepControl]="artistProfileForm"
+      errorMessage="Please provide Artist Details"
+    >
+      <h1 class="text-3xl font-bold mb-8">Artist Profile</h1>
+      <div class="flex-wrap flex items-start justify-evenly">
+        <div class="w-full sm:w-2/3 md:w-1/3 lg:w-1/3">
+          <div class="mb-8">
+            <label class="block mb-2 text-lg font-medium"
+              >Profile Picture</label
+            >
+            <div
+              class="w-full h-48 border-2 border-dashed border-[#14b54c] rounded-md flex items-center justify-center cursor-pointer"
+              (click)="fileInput.click()"
+              (dragover)="onDragOver($event)"
+              (drop)="onDrop($event)"
+            >
+              <div class="flex flex-col items-center">
+                <div
+                  *ngIf="!imagePreview"
+                  class="text-gray-500 text-lg text-[16px] p-[30px] text-center"
+                >
+                  Drag and drop or click to upload an image
+                </div>
+                <img
+                  *ngIf="imagePreview"
+                  [src]="imagePreview"
+                  class="w-full max-h-36 object-cover rounded-md"
+                />
+              </div>
+              <input
+                #fileInput
+                class="hidden"
+                (change)="handleFileChange($event)"
+                type="file"
+                accept="image/jpeg, image/jpg, image/png"
+                formControlName="profilePicture"
+              />
+            </div>
+            <mat-error
+              id="pictureError"
+              *ngIf="
+                fileInput &&
+                profilePicture.invalid &&
+                (profilePicture.dirty || profilePicture.touched)
+              "
+            >
+              Picture is required.
+            </mat-error>
+          </div>
+          <div class="mb-8">
+            <label class="block mb-2 text-lg font-medium">Starting Date</label>
+            <input
+              class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#1ED760]"
+              type="date"
+              formControlName="startingDate"
+            />
+          </div>
+        </div>
+        <div class="w-full sm:w-2/3 md:w-1/3 lg:w-1/3">
+          <div class="mb-8">
+            <label class="block mb-2 text-lg font-medium">Stage Name</label>
+            <input
+              class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#1ED760]"
+              type="text"
+              formControlName="stageName"
+            />
+          </div>
+          <div class="mb-8">
+            <label class="block mb-2 text-lg font-medium"
+              >Artist Backstory</label
+            >
+            <textarea
+              class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#1ED760]"
+              rows="4"
+              formControlName="artistBackstory"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-between">
+        <button
+          mat-button
+          color="primary"
+          (click)="stepper.previous()"
+          class="bg-[#1ED760] hover:bg-[#14b54c] text-white py-2 px-4 rounded-md"
+        >
+          Previous
+        </button>
+        <button
+          mat-button
+          color="primary"
+          (click)="stepper.next(); this.artistProfileForm.markAllAsTouched()"
+          class="bg-[#1ED760] hover:bg-[#14b54c] text-white py-2 px-4 rounded-md"
+        >
+          Next
+        </button>
+      </div>
+    </mat-step>
+
+    <mat-step>
+      <form [formGroup]="artistForm">
+        <div class="flex justify-between items-center">
+          <h1 class="text-3xl font-bold">Albums</h1>
+        </div>
+
+        <div
+          formArrayName="albums"
+          class="flex flex-wrap py-12 lg:px-12 gap-[10px] justify-evenly"
+        >
+          <div *ngIf="albumsForm.controls.length == 0">No albums, Add some</div>
+          <div
+            class="border border-gray-300 rounded-md w-[220px] p-[10px] my-1 sm:w-1/2 md:w-[49%] lg:w-1/4"
+            *ngFor="let album of albumsForm.controls; let albumIndex = index"
+            [formGroupName]="albumIndex"
+          >
+            <div class="flex items-center justify-between mb-[10px]">
+              <h3 class="m-0">Album {{ albumIndex + 1 }}</h3>
+              <button type="button" (click)="removeAlbum(albumIndex)">
+                &#x2716;
+              </button>
+            </div>
+            <div>
+              <label
+                for="picture{{ albumIndex }}"
+                class="block mb-2 text-lg font-medium"
+                >Album Picture</label
+              >
+              <input
+                class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#1ED760]"
+                type="file"
+                id="picture{{ albumIndex }}"
+                formControlName="picture"
+                accept="image/jpeg, image/jpg, image/png"
+              />
+            </div>
+
+            <!-- Album Date -->
+            <div class="mb-[30px]">
+              <label
+                for="date{{ albumIndex }}"
+                class="block mb-2 text-lg font-medium"
+                >Album Date</label
+              >
+              <input
+                class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#1ED760]"
+                type="date"
+                id="date{{ albumIndex }}"
+                formControlName="date"
+              />
+            </div>
+
+            <div
+              formArrayName="songs"
+              class="flex flex-col justify-center items-center"
+            >
+              <h1>Songs</h1>
+              <div
+                class="border border-gray-300 rounded-md w-[200px] p-[10px] mb-[25px]"
+                *ngFor="
+                  let song of getAlbumSongs(albumIndex).controls;
+                  let songIndex = index
+                "
+                [formGroupName]="songIndex"
+              >
+                <div class="flex items-center justify-between mb-[10px]">
+                  <h3 class="block mb-2 text-lg font-medium m-0">
+                    Song {{ songIndex + 1 }}
+                  </h3>
+                  <button
+                    type="button"
+                    (click)="removeSong(albumIndex, songIndex)"
+                  >
+                    &#x2716;
+                  </button>
+                </div>
+                <div>
+                  <label
+                    class="pb-[10px]"
+                    for="songName{{ albumIndex }}_{{ songIndex }}"
+                    >Song Name:</label
+                  >
+                  <input
+                    class="pb-[10px] w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#1ED760]"
+                    type="text"
+                    id="songName{{ albumIndex }}_{{ songIndex }}"
+                    formControlName="name"
+                    placeholder="Song Name"
+                  />
+                </div>
+                <div>
+                  <label
+                    class="pb-[10px]"
+                    for="songDuration{{ albumIndex }}_{{ songIndex }}"
+                    >Song Duration:</label
+                  >
+                  <input
+                    class="pb-[10px] w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#1ED760]"
+                    type="text"
+                    placeholder="Song Duration"
+                    id="songDuration{{ albumIndex }}_{{ songIndex }}"
+                    formControlName="duration"
+                  />
+                </div>
+              </div>
+
+              <button
+                type="button"
+                (click)="addSong(albumIndex)"
+                class="mt-4 bg-[#1ed7c4] hover:bg-[#19b1a2] text-white py-2 px-4 rounded-md"
+              >
+                Add Song
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-between">
+          <button
+            mat-button
+            color="primary"
+            (click)="stepper.previous()"
+            class="bg-[#1ED760] hover:bg-[#14b54c] text-white py-2 px-4 rounded-md"
+          >
+            Previous
+          </button>
+          <button
+            type="button"
+            (click)="addAlbum()"
+            class="bg-[#1ED760] hover:bg-[#14b54c] text-white py-2 px-4 rounded-md"
+          >
+            Add Album
+          </button>
+        </div>
+      </form>
+    </mat-step>
+  </mat-stepper>
+</div>

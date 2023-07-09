@@ -1,0 +1,24 @@
+<div
+  *ngIf="album"
+  class="p-4 mb-8 md:p-3 flex flex-col items-center border-2 border-gray-300 rounded-lg min-h-[460px]"
+>
+  <h2 class="font-bold text-xl mb-3 text-center">{{ album.name }}</h2>
+
+  <img
+    [src]="album.images[1].url ? album.images[0].url : noImage"
+    alt="Artist Image"
+    class="mb-3 rounded shadow-md h-48 w-48 object-cover object-center"
+  />
+  <span class="text-gray-700 text-base text-center mb-2">{{
+    album.album_type
+  }}</span>
+  <span class="text-gray-700 text-base text-center mb-2">{{
+    album.release_date
+  }}</span>
+  <button
+    class="flex mx-auto px-10 py-4 rounded-full text-[20px] text-[#191414] font-semibold shadow-lg hover:cursor-pointer bg-spotify-green-800 mt-auto mb-[10px]"
+    (click)="viewAlbum(album.uri)"
+  >
+    View Album
+  </button>
+</div>

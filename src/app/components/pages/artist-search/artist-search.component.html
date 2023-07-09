@@ -1,0 +1,146 @@
+<app-navbar></app-navbar>
+<form
+  *ngIf="!onSearchDownEnabled"
+  class="flex flex-row items-center justify-center mt-10"
+  (ngSubmit)="onSearch()"
+>
+  <input
+    type="text"
+    [formControl]="searchControl"
+    class="border-solid border-[3px] border-gray-400 rounded-l-full w-[80%] md:w-[60%] h-12 text-xl pl-5 inline"
+    placeholder="Search for an artist..."
+  />
+  <button
+    type="submit"
+    class="flex justify-center items-center h-12 px-2 md:px-6 font-semibold tracking-wide transition duration-200 shadow-md focus:shadow-outline focus:outline-none w-[50px] md:w-[80px] bg-[#1ED760] hover:bg-[#14b54c]"
+  >
+    <img
+      src="../../../../assets/svg/magnifier.svg"
+      alt="search"
+      class="w-6 md:w-[20px]"
+    />
+  </button>
+  <a
+    class="h-12 px-2 md:px-6 font-semibold tracking-wide rounded rounded-r-full transition duration-200 shadow-md focus:shadow-outline focus:outline-none w-[50px] md:w-[80px] bg-[#1ed7c4] hover:bg-[#19b1a2] flex justify-center items-center"
+    [routerLink]="['/artist-signup']"
+  >
+    <img
+      src="../../../../assets/svg/add.svg"
+      alt="search"
+      class="w-6 md:w-[20px]"
+    />
+  </a>
+</form>
+
+<form
+  *ngIf="onSearchDownEnabled"
+  class="flex flex-row items-center justify-center mt-10"
+>
+  <input
+    type="text"
+    (input)="onSearchKeyDown($event)"
+    class="border-solid border-[3px] border-gray-400 rounded-l-full w-[95%] md:w-[70%] h-12 text-xl pl-5 inline"
+    placeholder="Search for an artist..."
+  />
+  <a
+    class="rounded-r-full flex justify-center items-center h-12 px-2 md:px-6 font-semibold tracking-wide transition duration-200 shadow-md focus:shadow-outline focus:outline-none w-[50px] md:w-[80px] bg-[#1ed7c4] hover:bg-[#19b1a2]"
+    [routerLink]="['/artist-signup']"
+  >
+    <img
+      src="../../../../assets/svg/add.svg"
+      alt="search"
+      class="w-6 md:w-[20px]"
+    />
+  </a>
+</form>
+
+<div class="flex flex-row items-center justify-center mt-4">
+  <input
+    type="checkbox"
+    [(ngModel)]="onSearchDownEnabled"
+    (change)="clearsearch()"
+  />
+  <label class="p-[5px] inline-block leading-normal max-w-[507px] font-medium"
+    >Search-As-You-Type</label
+  >
+</div>
+
+<div *ngIf="searchResults.length" class="flex flex-wrap py-12 lg:px-12">
+  <div
+    *ngFor="let artist of searchResults; let i = index"
+    class="my-1 px-1 w-full sm:w-1/2 md:w-1/2 lg:w-1/4"
+  >
+    <div
+      *ngIf="artist"
+      class="p-4 mb-8 md:p-3 flex flex-col items-center border-2 border-gray-300 rounded-lg min-h-[460px]"
+    >
+      <img
+        [src]="artist?.images[0]?.url ? artist?.images[1]?.url : noImage"
+        alt="Artist Image"
+        class="mb-3 rounded shadow-md h-48 w-48 object-cover object-center"
+      />
+      <h2 class="font-bold text-xl mb-2">{{ artist.name }}</h2>
+      <p class="text-gray-700 text-base">
+        {{ artist.followers.total }} followers
+      </p>
+      <div
+        class="flex flex-row-reverse gap-[4.8px] w-full scale-[0.6] justify-center items-center"
+      >
+        <ng-container *ngFor="let rating of [5, 4, 3, 2, 1]">
+          <input
+            class="appearance-none peer"
+            [value]="rating"
+            [name]="'star-radio-' + i"
+            [id]="'star-' + i + '-' + rating"
+            type="radio"
+            [checked]="
+              rating === floorRating(calculateRating(artist.popularity))
+            "
+            disabled
+          />
+          <label
+            [for]="'star-' + i + '-' + rating"
+            class="peer-checked:fill-[#ffc73a] fill-transparent"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-[48px] h-[48px] overflow-visible stroke-[#ffc73a] fill-inherit"
+              fill="#FFFFFF"
+            >
+              <path
+                stroke-linejoin="bevel"
+                d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"
+                pathLength="360"
+                class=""
+              ></path>
+              <ng-container
+                *ngIf="rating - calculateRating(artist.popularity) === 0.5"
+              >
+                <path
+                  d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"
+                  pathLength="360"
+                  clip-path="inset(0 50% 0 0)"
+                  class="absolute left-0 fill-[#ffc73a]"
+                ></path>
+              </ng-container>
+            </svg>
+          </label>
+        </ng-container>
+      </div>
+      <button
+        class="flex mx-auto px-10 py-4 rounded-full text-[20px] text-[#191414] font-semibold shadow-lg hover:cursor-pointer bg-spotify-green-800 mt-auto mb-[10px]"
+        (click)="viewArtist(artist.id)"
+      >
+        View Artist Album
+      </button>
+    </div>
+  </div>
+</div>
+
+<div
+  *ngIf="searchResults.length === 0"
+  class="flex flex-row items-center justify-center mt-[50px]"
+>
+  No results found.
+</div>
