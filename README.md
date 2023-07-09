@@ -1,27 +1,28 @@
-# Assentify
+# AssentifySpotifySearcher
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.5.
+AssentifySpotifySearcher is built using the following technologies:
+
+-Angular version 15.2.5
+-Angular Material
+-Tailwind CSS
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `ng serve` or `npm start ` for a dev server. Navigate to `http://localhost:4200/landing`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Creds
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+You can access the project locally with this username and password
 
-## Build
+-Email:`spotifysearcher79@gmail.com`
+-PassWord:`SpotifySearcher@22`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+this is a demo account.
 
-## Running unit tests
+## Features
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Assentify provides the following features:
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+-Feature 1: login with Spotify.
+-Feature 2: Search ur favorite Artist.
+-Feature 3: view ur favorite Artist Albums.
