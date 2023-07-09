@@ -19,8 +19,9 @@ then
 To run this project, install it locally using npm:
 
 ```
-npm i
-npm start
+*  cd .\assentify\
+* npm i
+* npm start
 ```
 
 Navigate to `http://localhost:4200/landing`. The application will automatically reload if you change any of the source files.
