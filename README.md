@@ -12,6 +12,10 @@ Project is created with:
 
 ## Setup
 
+clone the project first `git clone https://github.com/ibrahimxj/assentify.git`
+
+then 
+
 To run this project, install it locally using npm:
 
 ```
