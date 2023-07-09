@@ -30,7 +30,6 @@ export class ArtistComponent implements OnInit {
         .getArtistAlbums(this.artistId, this.token)
         .then((albums) => {
           this.albums = albums;
-          console.log(this.albums);
         })
         .catch((error) => {
           console.error('Error fetching artist albums:', error);
