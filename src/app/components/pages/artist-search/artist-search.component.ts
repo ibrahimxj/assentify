@@ -112,7 +112,6 @@ export class ArtistSearchComponent {
       this.spotifyService.search(keyword, type, token).subscribe(
         (results) => {
           this.searchResults = results.artists.items;
-          console.log(this.searchResults);
         },
         (error) => {
           console.error('Error searching:', error);
