@@ -25,8 +25,8 @@ Navigate to `http://localhost:4200/landing`. The application will automatically 
 
 You can access the project locally with this username and password
 
-*Email:`spotifysearcher79@gmail.com`
-*PassWord:`SpotifySearcher@22`
+* Email:`spotifysearcher79@gmail.com`
+* PassWord:`SpotifySearcher@22`
 
 this is a demo account.
 
