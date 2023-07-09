@@ -1,17 +1,21 @@
 ## General info
-AssentifySpotifySearcher is built using the following technologies:
-	
+
+AssentifySpotifySearcher is web application which allows users to search for songs, albums, and artists on Spotify
+
 ## Technologies
+
 Project is created with:
-* Angular version 15.2.5
-* Angular Material
-* Tailwind CSS
-	
+
+- Angular version 15.2.5
+- Angular Material
+- Tailwind CSS
+
 ## Setup
+
 To run this project, install it locally using npm:
 
 ```
-ng serve
+npm start
 ng serve
 ```
 
@@ -30,6 +34,6 @@ this is a demo account.
 
 Assentify provides the following features:
 
-* Feature 1: login with Spotify.
-* Feature 2: Search ur favorite Artist.
-* Feature 3: view ur favorite Artist Albums.
+- Feature 1: Search for songs, albums, and artists on Spotify.
+- Feature 2: View detailed information about search results, including album covers, track listings, and artist profiles.
+- Feature 3: Create Fake Artists.
