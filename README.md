@@ -15,8 +15,8 @@ Project is created with:
 To run this project, install it locally using npm:
 
 ```
+npm i
 npm start
-ng serve
 ```
 
 Navigate to `http://localhost:4200/landing`. The application will automatically reload if you change any of the source files.
@@ -25,8 +25,8 @@ Navigate to `http://localhost:4200/landing`. The application will automatically 
 
 You can access the project locally with this username and password
 
-* Email:`spotifysearcher79@gmail.com`
-* PassWord:`SpotifySearcher@22`
+- Email:`spotifysearcher79@gmail.com`
+- PassWord:`SpotifySearcher@22`
 
 this is a demo account.
 
