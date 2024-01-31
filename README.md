@@ -9,6 +9,7 @@ Project is created with:
 - Angular version 15.2.5
 - Angular Material
 - Tailwind CSS
+- node version 16.20.2 LTS
 
 ## Setup
 
@@ -30,8 +31,8 @@ Navigate to `http://localhost:4200/landing`. The application will automatically 
 
 You can access the project locally with this Spotify Account :
 
-- Email:`spotifysearcher79@gmail.com`
-- PassWord:`SpotifySearcher@22`
+- Email:`spotifydeveloper01@gmail.com`
+- PassWord:`spotifydeveloper01`
 
 this is a demo account.
 
